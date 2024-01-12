@@ -1,8 +1,4 @@
-const db = require('../../models')
-const Cinema = require('../../models/Cinema')(
-  db.sequelize,
-  db.Sequelize.DataTypes
-)
+const { Cinema } = require('../../models')
 
 function createCinema() {
   console.log('se llama al endpoint de createCinema')
@@ -10,8 +6,7 @@ function createCinema() {
 
 async function getCinemas(_req, res) {
   const cinemas = await Cinema.findAll()
-  console.log('cinemas ->', cinemas)
-  res.send({ cinemas })
+  res.json({ cinemas })
 }
 
 module.exports = {
